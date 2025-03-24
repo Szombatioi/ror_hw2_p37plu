@@ -1,0 +1,9 @@
+<div class="border border-dark p-2">
+    <h3 class="m-0"><%= record.title %></h3>
+    
+    <% if record.lyrics %>
+        <p class="m-0"><%= simple_format(record.lyrics) %></p>
+    <% else %>
+        <p>Még nincs dalszöveg...</p>
+    <% end %>
+</div>
