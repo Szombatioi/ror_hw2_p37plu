@@ -1,0 +1,31 @@
+<%# 
+
+title
+land
+
+edit and delete button
+
+if lyrics div
+
+if link
+
+uploader right
+
+hr
+total comments
+for i in comments
+
+%>
+
+<h1 class="text-center"><%= @record.title %></h1>
+<h2 class="text-center"><%= @land.name %></h2>
+
+<% if @record.lyrics %>
+    <div class="mx-auto d-block">
+        <p><%= simple_format(@record.lyrics) %></p>
+    </div>
+<% end %>
+
+<% if @record.link %>
+    <p><%= @record.link %></p>
+<% end %>

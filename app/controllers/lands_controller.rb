@@ -1,6 +1,6 @@
 class LandsController < ApplicationController
     def show
-        @land = Land.includes(:records).find_by(name: params[:name]) # Find land by its name
+        @land = Land.includes(:records).find_by(name: params[:name]) 
         if @land
             render :show
         else
