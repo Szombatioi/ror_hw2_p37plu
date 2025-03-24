@@ -1,0 +1,10 @@
+<div class="border border-dark p-2">
+    
+    <%= image_tag(land[:land].img_name, alt: land[:land].name, class: "img-fluid mx-auto d-block mb-2 border border-dark", style: "max-width: 75%; max-height: 75%;") %>
+
+    <h3 class="m-0"><%= land[:land].name %></h3>
+    <div>
+        <p class="p-0 m-0"><%= land.count %> zene</p>
+        <p class="p-0 m-0"><%= land[:lyrics_count] %> dalszöveg</p>
+    </div>
+</div>
