@@ -27,5 +27,5 @@ for i in comments
 <% end %>
 
 <% if @record.link %>
-    <p><%= @record.link %></p>
+    <p><%= link_to @record.link, @record.link %></p>
 <% end %>

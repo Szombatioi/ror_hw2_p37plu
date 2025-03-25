@@ -1,11 +1,22 @@
-<div class="border border-dark p-2">
+<div class="border border-dark p-2" style="height: 325px; display: flex; flex-direction: column; justify-content: space-around;">
+    <div style="display: block; position: absolute; bottom: 5px; right: 20px;">
+        <%= link_to edit_land_path(land[:land]), class: "btn btn-primary" do %>
+            <i class="bi bi-pencil"></i>
+        <% end %>
+    </div>
     
-    <%= image_tag(land[:land].img_name, alt: land[:land].name, class: "img-fluid mx-auto d-block mb-2 border border-dark", style: "max-width: 75%; max-height: 75%; border: 1px solid black;") %>
+    <% if land[:land].img_name %>
+        <div style="overflow: hidden; height: 100%;">
+            <%= image_tag(land[:land].img_name, alt: land[:land].name, class: "img-fluid mx-auto d-block mb-2 border border-dark") %>
+        </div>
+    <% end %>
 
-    <h3 class="m-0"><%= land[:land].name %></h3>
-    <div>
-        <p class="p-0 m-0"><%= land[:record_count] %> zene</p>
-        <p class="p-0 m-0"><%= land[:lyrics_count] %> dalszöveg</p>
-        <p class="p-0 m-0"><%= land[:links_count] %> forrás</p>
+    <div style="margin-top: auto;">
+        <h3 class="m-0"><%= link_to land[:land].name, land_path(name: land[:land].name), style: "color: black;" %></h3>
+        <div>
+            <p class="p-0 m-0"><%= land[:record_count] %> zene</p>
+            <p class="p-0 m-0"><%= land[:lyrics_count] %> dalszöveg</p>
+            <p class="p-0 m-0"><%= land[:links_count] %> link</p>
+        </div>
     </div>
 </div>

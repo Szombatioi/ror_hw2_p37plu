@@ -1,0 +1,33 @@
+<div class="border border-dark text-center" style="width: 50%; margin: 0 auto; padding: 10px;">
+
+  <h2 class="mb-4">Regisztráció</h2>
+  <div class="mx-auto d-block" style="width: 50%;">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field my-2">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email-cím", class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.text_field :username, autocomplete: "username", placeholder: "Felhasználónév", class: "form-control" %>
+      </div>
+
+      <div class="field my-2">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Jelszó", class: "form-control" %>
+      </div>
+
+      <div class="field my-2">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Jelszó újra", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Regisztráció", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+</div

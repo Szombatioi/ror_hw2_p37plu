@@ -1,0 +1,28 @@
+<h1 class="text-center my-4">Új tájegység felvétele</h1>
+
+<div style="width: 50%;" class="mx-auto d-block">
+    <%= form_with model: @land, local: true, html: { enctype: "multipart/form-data" } do |form| %>
+    <% if @land.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@land.errors.count, "error") %> prohibited this land from being saved:</h2>
+        <ul>
+            <% @land.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+        <%= form.text_field :name, class: "form-control", placeholder: "Tájegység neve" %>
+    </div>
+
+    <div class="">
+        <%= form.file_field :img_name, class: "" %>
+    </div>
+
+    <div class="form-group my-2">
+        <%= form.submit "Hozzáad", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</div>

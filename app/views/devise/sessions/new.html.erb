@@ -1,0 +1,29 @@
+<div class="border border-dark text-center" style="width: 50%; margin: 0 auto; padding: 10px;">
+
+  <h2 class="mb-4">Bejelentkezés</h2>
+  <div class="mx-auto d-block" style="width: 50%;">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+      <div class="field mb-3">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email-cím", class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Jelszó", class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field mt-2">
+          <%= f.check_box :remember_me %>
+          <%= label_tag :email, "Maradjak bejelentkezve", class: "form-label" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Bejelentkezés", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
