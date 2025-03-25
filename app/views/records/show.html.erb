@@ -20,12 +20,14 @@ for i in comments
 <h1 class="text-center"><%= @record.title %></h1>
 <h2 class="text-center"><%= @land.name %></h2>
 
-<% if @record.lyrics %>
+<% if @record.lyrics && !@record.lyrics.empty? %>
     <div class="mx-auto d-block">
         <p><%= simple_format(@record.lyrics) %></p>
     </div>
+<% else %>
+    <p class="text-center">Még nincs dalszöveg...</p>
 <% end %>
 
 <% if @record.link %>
-    <p><%= link_to @record.link, @record.link %></p>
+    <p>Link: <%= link_to @record.link, @record.link %></p>
 <% end %>

@@ -1,8 +1,8 @@
 class RecordsController < ApplicationController
-    before_action :set_land
+    before_action :set_land, only: [:new, :create]
 
     def show
-        @land = Land.includes(:records).find_by(name: params[:name])
+        @land = Land.includes(:records).find_by(id: params[:land_id])
         @record = @land.records.find_by(id: params[:id])
         if @record
             render :show
@@ -13,12 +13,13 @@ class RecordsController < ApplicationController
 
     def new
         @record = @land.records.build
+        @lands = Land.all
     end
     
     def create
         @record = @land.records.build(record_params)
         if @record.save
-            redirect_to @land, notice: 'Record was successfully created.'
+            redirect_to land_path(id: @record.land.id), notice: 'Record was successfully created.'
         else
             render :new
         end
@@ -27,10 +28,10 @@ class RecordsController < ApplicationController
     private
 
     def set_land
-        @land = Land.find(params[:id])
+        @land = Land.find(params[:land_id])
     end
 
     def record_params
-        params.require(:record).permit(:title, :lyrics, :link)
+        params.require(:record).permit(:land_id, :title, :lyrics, :link)
     end
 end

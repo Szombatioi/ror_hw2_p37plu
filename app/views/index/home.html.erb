@@ -17,7 +17,7 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <div class="text-center">
-    <%= button_to "Felvétel", new_land_path, class: "btn btn-primary" %>
+  <div class="text-center my-4">
+    <%= button_to "Felvétel", 'lands/new', method: 'get', class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -16,4 +16,8 @@
       <p class="text-center">Még nincs elmentve felvétel...</p>
 <% end %>
 
-<%= button_to "Felvétel", new_land_record_path(@land), class: "btn btn-primary" %>
+<% if user_signed_in? %>
+    <div class="text-center my-4">
+        <%= button_to "Felvétel", new_land_record_path(land_id: @land.id), method: 'get', class: "btn btn-primary" %>
+    </div>
+<% end %>

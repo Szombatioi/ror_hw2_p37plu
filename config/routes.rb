@@ -8,17 +8,21 @@ Rails.application.routes.draw do
   # get 'index/home'
   root "index#home"
 
-  get "lands/:name", to: "lands#show", as: :land
-  get "lands/:name/:id", to: "records#show", as: :record
-
-  # resources :lands, only: [:new, :create, :show, :index]
-  
-  resources :lands, only: [:new, :create, :show, :index, :edit, :update] do
-    resources :records, only: [:new, :create]
+  resources :lands do
+    resources :records
   end
-  post "lands/new", to: "lands#new"
-  post "lands/:id/records/new", to: "records#new"
-  put "lands/:id/edit", to: "lands#edit"
+
+  # get "lands/:name", to: "lands#show", as: :land
+  # get "lands/:name/:id", to: "records#show", as: :record
+
+  # # resources :lands, only: [:new, :create, :show, :index]
+  
+  # resources :lands, only: [:new, :create, :show, :index, :edit, :update] do
+  #   resources :records, only: [:new, :create]
+  # end
+  # post "lands/new", to: "lands#new"
+  # post "lands/:id/records/new", to: "records#new"
+  # put "lands/:id/edit", to: "lands#edit"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

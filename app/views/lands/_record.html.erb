@@ -1,9 +1,9 @@
-<div class="border border-dark p-2">
+<div class="border border-dark p-2" style="height: 250px; display: flex; flex-direction: column; overflow: hidden;">
     <h3 class="m-0">
-        <%= link_to record.title, record_path(name: @land.name, id: record.id), style: "color: black;" %>
+        <%= link_to record.title, land_record_path(land_id: @land.id, id: record.id), style: "color: black;" %>
     </h3>
     
-    <% if record.lyrics %>
+    <% if record.lyrics && !record.lyrics.empty? %>
         <p class="m-0"><%= simple_format(record.lyrics) %></p>
     <% else %>
         <p>Még nincs dalszöveg...</p>
