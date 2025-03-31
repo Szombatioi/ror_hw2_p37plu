@@ -5,6 +5,7 @@ class RecordsController < ApplicationController
         @land = Land.includes(:records).find_by(id: params[:land_id])
         @record = @land.records.find_by(id: params[:id])
         if @record
+            # @comment = Comment.new
             render :show
         else
             render plain: "Nem található a felvétel", status: :not_found
@@ -18,6 +19,9 @@ class RecordsController < ApplicationController
     
     def create
         @record = @land.records.build(record_params)
+        @record.uploader = current_user.username
+        @record.date = Date.today
+
         if @record.save
             redirect_to land_path(id: @record.land.id), notice: 'Record was successfully created.'
         else

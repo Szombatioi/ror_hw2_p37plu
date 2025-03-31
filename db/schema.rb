@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_24_192831) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_31_204724) do
   create_table "comments", charset: "utf8mb3", collation: "utf8mb3_uca1400_ai_ci", force: :cascade do |t|
     t.text "text"
     t.bigint "user_id", null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_24_192831) do
     t.bigint "land_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uploader"
+    t.date "date"
     t.index ["land_id"], name: "index_records_on_land_id"
   end
 

@@ -28,6 +28,10 @@ for i in comments
     <p class="text-center">Még nincs dalszöveg...</p>
 <% end %>
 
-<% if @record.link %>
+<% if @record.link && !@record.link.empty? %>
     <p>Link: <%= link_to @record.link, @record.link %></p>
+<% end %>
+
+<% if @record.uploader && !@record.uploader.empty? %>
+    <p style="bottom: 0; right: 0;">Feltöltötte: <%= @record.uploader %>, <%= @record.date %></p>
 <% end %>
