@@ -29,9 +29,48 @@ for i in comments
 <% end %>
 
 <% if @record.link && !@record.link.empty? %>
-    <p>Link: <%= link_to @record.link, @record.link %></p>
+    <p style="">Link: <%= link_to @record.link, @record.link %></p>
 <% end %>
 
-<% if @record.uploader && !@record.uploader.empty? %>
-    <p style="bottom: 0; right: 0;">Feltöltötte: <%= @record.uploader %>, <%= @record.date %></p>
+<div style="position: relative; bottom: 0;">
+    <% if @record.uploader && !@record.uploader.empty? %>
+        <hr />
+        <p style="bottom: 0; right: 0;">Feltöltötte: <%= @record.uploader %>, <%= @record.date.strftime("%Y.%m.%d") %></p>
+    <% end %>
+</div>
+
+<hr />
+<h3><%= @record.comments.count %> hozzászólás</h3>
+
+<% if user_signed_in? %>
+  <%= form_with(model: [@record.land, @record, @comment], local: true) do |form| %>
+    <div style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-items: center;" >
+      <%= form.text_area :text, placeholder: "Írj egy hozzászólást...", rows: 1, required: true, style: "flex-grow: 1;" %>
+      <%= form.submit "Küldés", class: "btn" %>
+    </div>
+  <% end %>
+<% else %>
+  <p>Be kell jelentkeznie hozzászólás írásához!</p>
+<% end %>
+
+<% if @record.comments.any? %>
+  <% @record.comments.reverse_each.with_index do |comment, index| %>
+    <% if comment.text && !comment.text.empty? %>
+      <div class="m-2">
+        <div style="margin-bottom: 0;">
+        <p style="margin-bottom: 0;">
+          <strong><%= comment.user.username %></strong>
+          <span style="display: inline; margin-left: 8px; color: grey; font-size: 12px;">
+            <%= comment.created_at.strftime("%Y.%m.%d") %>
+          </span>
+        </p>
+        <%= comment.text %>
+      </div>
+
+      <% if index != @record.comments.count - 1 %>
+        <hr class="m-0"/>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

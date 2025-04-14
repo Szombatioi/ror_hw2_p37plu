@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_31_204724) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_14_173853) do
   create_table "comments", charset: "utf8mb3", collation: "utf8mb3_uca1400_ai_ci", force: :cascade do |t|
     t.text "text"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "record_id", null: false
+    t.string "username"
+    t.index ["record_id"], name: "index_comments_on_record_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -52,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_204724) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "records"
   add_foreign_key "comments", "users"
   add_foreign_key "records", "lands"
 end

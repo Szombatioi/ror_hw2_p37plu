@@ -3,9 +3,9 @@ class RecordsController < ApplicationController
 
     def show
         @land = Land.includes(:records).find_by(id: params[:land_id])
-        @record = @land.records.find_by(id: params[:id])
+        @record = @land.records.includes(:comments).find_by(id: params[:id])
         if @record
-            # @comment = Comment.new
+            @comment = Comment.new
             render :show
         else
             render plain: "Nem található a felvétel", status: :not_found

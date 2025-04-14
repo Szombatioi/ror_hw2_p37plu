@@ -1,9 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="border border-dark text-center" style="width: 50%; margin: 0 auto; padding: 10px;">
+
+
+<h2>Profil szerkesztése</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field mb-4">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -12,32 +15,22 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="field m-2">
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Új jelszó", title: "(hagyja üresen, ha nem akarja módosítani)" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field m-2">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Új jelszó újra" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="field m-2">
+    <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Jelenlegi jelszó" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Módosítás" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<%= link_to "Vissza", :back %>
+</div>
