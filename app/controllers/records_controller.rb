@@ -1,5 +1,18 @@
 class RecordsController < ApplicationController
-    before_action :set_land, only: [:new, :create]
+    before_action :set_land, only: [:new, :create, :edit, :update]
+    before_action :set_record, only: [:edit, :update]
+
+    def edit
+        @lands = Land.all
+    end
+
+    def update
+        if @record.update(record_params)
+            redirect_to land_record_path(@land, @record), notice: 'Record updated successfully.'
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
 
     def show
         @land = Land.includes(:records).find_by(id: params[:land_id])
@@ -33,6 +46,10 @@ class RecordsController < ApplicationController
 
     def set_land
         @land = Land.find(params[:land_id])
+    end
+
+    def set_record
+        @record = @land.records.find(params[:id])
     end
 
     def record_params

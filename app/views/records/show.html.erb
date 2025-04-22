@@ -1,21 +1,12 @@
-<%# 
+<button style="position: absolute;" class="btn btn-outline-primary" onclick="history.back()">
+  <i class="bi bi-arrow-left"></i> Vissza
+</button>
 
-title
-land
-
-edit and delete button
-
-if lyrics div
-
-if link
-
-uploader right
-
-hr
-total comments
-for i in comments
-
-%>
+<div style="width: 100%; text-align: right; margin-left: auto; margin-right: auto;">  
+  <%= link_to edit_land_record_path(@land, @record), class: "btn btn-outline-primary" do %>
+    <i class="bi bi-pencil"></i>
+  <% end %>
+</div>
 
 <h1 class="text-center"><%= @record.title %></h1>
 <h2 class="text-center"><%= @land.name %></h2>
@@ -36,6 +27,10 @@ for i in comments
     <% if @record.uploader && !@record.uploader.empty? %>
         <hr />
         <p style="bottom: 0; right: 0;">Feltöltötte: <%= @record.uploader %>, <%= @record.date.strftime("%Y.%m.%d") %></p>
+    <% end %>
+
+    <% if @record.updated_at && @record.updated_at != @record.created_at %>
+      Módosítás: <%= @record.updated_at.strftime("%Y.%m.%d") %>
     <% end %>
 </div>
 
