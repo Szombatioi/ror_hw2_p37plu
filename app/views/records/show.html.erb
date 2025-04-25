@@ -53,13 +53,13 @@
     <% if comment.text && !comment.text.empty? %>
       <div class="m-2">
         <div style="margin-bottom: 0;">
-        <p style="margin-bottom: 0;">
-          <strong><%= comment.user.username %></strong>
-          <span style="display: inline; margin-left: 8px; color: grey; font-size: 12px;">
-            <%= comment.created_at.strftime("%Y.%m.%d") %>
-          </span>
-        </p>
-        <%= comment.text %>
+          <p style="margin-bottom: 0;">
+            <strong><%= comment.user.username %></strong>
+            <span style="display: inline; margin-left: 8px; color: grey; font-size: 12px;">
+              <%= comment.created_at.strftime("%Y.%m.%d") %>
+            </span>
+          </p>
+          <%= comment.text %>
       </div>
 
       <% if index != @record.comments.count - 1 %>
