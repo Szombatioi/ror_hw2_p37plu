@@ -57,3 +57,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+group :test do
+  gem 'rails-controller-testing'
+end

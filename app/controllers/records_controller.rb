@@ -7,6 +7,8 @@ class RecordsController < ApplicationController
     end
 
     def update
+        @lands = Land.all
+
         if @record.update(record_params)
             redirect_to land_record_path(@land, @record), notice: 'Record updated successfully.'
         else
@@ -34,11 +36,12 @@ class RecordsController < ApplicationController
         @record = @land.records.build(record_params)
         @record.uploader = current_user.username
         @record.date = Date.today
+        @lands = Land.all
 
         if @record.save
             redirect_to land_path(id: @record.land.id), notice: 'Record was successfully created.'
         else
-            render :new
+            render :new, status: :unprocessable_entity
         end
     end
 
