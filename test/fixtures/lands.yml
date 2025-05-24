@@ -1,9 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  img_name: MyString
+  name: Kalotaszeg
 
 two:
-  name: MyString
-  img_name: MyString
+  name: Mezőség
