@@ -39,7 +39,7 @@ class RecordsController < ApplicationController
         @lands = Land.all
 
         if @record.save
-            redirect_to land_path(id: @record.land.id), notice: 'Record was successfully created.'
+            redirect_to land_path(id: @record.land.id), notice: 'Dal felvéve.'
         else
             render :new, status: :unprocessable_entity
         end
