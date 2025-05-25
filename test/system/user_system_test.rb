@@ -7,7 +7,7 @@ class UserFlowsTest < ApplicationSystemTestCase
     @user = users(:one)
   end
 
-  test "user logs in and creates land, record and comment" do
+  test "felhasználó belép és készít egy tájegységet, egy zenét és egy kommentet" do
     visit new_user_session_path
     fill_in "Email-cím", with: @user.email
     fill_in "Jelszó", with: 'password123'
@@ -15,7 +15,7 @@ class UserFlowsTest < ApplicationSystemTestCase
 
     assert_text "Népzenei gyűjtemény"
 
-    # Land létrehozása
+    # Tájegység létrehozása
     visit new_land_path
     fill_in "Tájegység neve", with: "System Test Land"
     click_button "Hozzáad"
@@ -23,7 +23,7 @@ class UserFlowsTest < ApplicationSystemTestCase
     assert_text "Tájegység felvéve."
     assert_text "System Test Land"
 
-    # Record létrehozása a Landhez
+    # Zene létrehozása a Tájegységhez
     click_link "System Test Land"
     click_button "Felvétel"
     fill_in "Cím", with: "System Test Record"
@@ -34,7 +34,7 @@ class UserFlowsTest < ApplicationSystemTestCase
     assert_text "Dal felvéve."
     assert_text "System Test Record"
 
-    # Comment hozzáadása a Recordhoz
+    # Comment hozzáadása a Zenéhez
     click_link "System Test Record"
     fill_in "Írj egy hozzászólást...", with: "This is a system test comment"
     click_button "Küldés"
